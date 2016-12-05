@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Building : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+public class Building {
+    public float hp;
+    public virtual void Update()
+    {
+        Debug.Log("You shouldnt get here!");
+    }
 }
