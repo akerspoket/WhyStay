@@ -1,28 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CropField : MonoBehaviour {
+public class CropField : BuildingJsonInfo {
     private CropFieldGlobals cropFieldImplementation;
 
     public float hp;
 	// Use this for initialization
 	void Start () {
-        Debug.Log(Application.dataPath);
-        LoadParametersFromFile(Application.dataPath + "/Scripts/Building/Dynamic Size/CropField/JsonInformation/" + "WheatField.json");
-
-        hp = cropFieldImplementation.hp;
-        Debug.Log(hp);
+        LoadParametersFromJson();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
+        //Debug.Log(cropFieldImplementation.name);
 	}
 
-    // Used to load data into classes from json file
-    public void LoadParametersFromFile(string p_fileName)
+    // We are counting on the fact that the base has set the json text
+    public void LoadParametersFromJson()
     {
-        string t_jsonText = System.IO.File.ReadAllText(p_fileName);
-        cropFieldImplementation = JsonUtility.FromJson<CropFieldGlobals>(t_jsonText);
-        t_jsonText = JsonUtility.ToJson(cropFieldImplementation);
+        cropFieldImplementation = JsonUtility.FromJson<CropFieldGlobals>(m_jsonText);
     }
 }

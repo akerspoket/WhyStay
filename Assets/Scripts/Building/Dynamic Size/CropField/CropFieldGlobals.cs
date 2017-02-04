@@ -10,7 +10,7 @@ public class CropFieldGlobals : DynamicSizeBuilding{
     //public float yieldFactor;
     //[Tooltip("")]
     private float growthPercentage = 0;
-
+    
     public override void Update()
     {
         // How many days the fram took   
