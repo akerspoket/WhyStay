@@ -198,7 +198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameField: {fileID: 44050296}
-  buildingToPlace: {fileID: 1920292409}
   highlightOffsetY: 1
   cellHighlighter: {fileID: 1920292409}
 --- !u!4 &137821459
@@ -411,6 +410,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1698362757}
   - 114: {fileID: 1698362758}
+  - 33: {fileID: 1698362760}
+  - 23: {fileID: 1698362759}
   m_Layer: 0
   m_Name: CropField
   m_TagString: Untagged
@@ -444,6 +445,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_jsonText: 
   hp: 0
+--- !u!23 &1698362759
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698362756}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &1698362760
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698362756}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1761990129
 GameObject:
   m_ObjectHideFlags: 0

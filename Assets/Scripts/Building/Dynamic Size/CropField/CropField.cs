@@ -8,6 +8,10 @@ public class CropField : BuildingJsonInfo {
 	// Use this for initialization
 	void Start () {
         LoadParametersFromJson();
+        if (cropFieldImplementation.name == "Corn Field")
+        {
+            GetComponent<MeshRenderer>().material.color = Color.blue;
+        }
     }
 
     // Update is called once per frame

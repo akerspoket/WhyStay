@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MapPicking : MonoBehaviour {
     public GameObject gameField; // The plane that covers the whole world 
-    public GameObject buildingToPlace;
 
     [Header("Cell visualization")]
     [Tooltip("Offset of how far up the cell highlighter will be placed")]
@@ -13,6 +12,8 @@ public class MapPicking : MonoBehaviour {
 
     // Private
     GridHandler gridHandler;
+    GameObject buildingToPlace = null;
+    string jsonText = null;
     // Use this for initialization
     void Start () {
         gridHandler = transform.GetComponent<GridHandler>();
@@ -29,11 +30,13 @@ public class MapPicking : MonoBehaviour {
         {
             t_hitPosition = t_ray.GetPoint(t_distance);
             LightUpCell(t_hitPosition);
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && buildingToPlace != null)
             {
                 Vector3 t_positionToPlaceBuilding;
                 gridHandler.TransformCellNumberToPosition(gridHandler.currentlySelectedGridX, gridHandler.currentlySelectedGridZ, out t_positionToPlaceBuilding);
-                Instantiate(buildingToPlace, t_positionToPlaceBuilding, Quaternion.identity);
+                GameObject newObject = (GameObject)Instantiate(buildingToPlace, t_positionToPlaceBuilding, Quaternion.identity);
+                newObject.GetComponent<BuildingJsonInfo>().m_jsonText = jsonText;
+                newObject.GetComponent<BuildingJsonInfo>().enabled = true;
             }     
         }
 
@@ -52,5 +55,12 @@ public class MapPicking : MonoBehaviour {
         gridHandler.currentlySelectedGridZ = t_cellNumberZ;
         t_positionToLightUp.y = highlightOffsetY;
         cellHighlighter.transform.position = t_positionToLightUp;
+    }
+
+    // Should probably not be here but lets go with it for now..
+    public void SetBuildingToPlaceWithInfo(GameObject p_object, string p_jsonText)
+    {
+        buildingToPlace = p_object;
+        jsonText = p_jsonText;
     }
 }
